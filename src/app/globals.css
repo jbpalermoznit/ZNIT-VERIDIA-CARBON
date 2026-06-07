@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand: #56b7a5;
+    --ink: #030304;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-white text-ink-900 font-sans antialiased;
+  }
+
+  /* Foco acessível consistente com a marca */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white;
+  }
+}
+
+@layer components {
+  /* Pattern sutil do ZNIT — faixa de marca d'água para fundos verdes */
+  .brand-mesh {
+    background-image:
+      radial-gradient(120% 120% at 0% 0%, #6cc4b3 0%, transparent 55%),
+      radial-gradient(120% 120% at 100% 100%, #3f9686 0%, transparent 60%),
+      linear-gradient(135deg, #56b7a5 0%, #4aa897 100%);
+  }
+
+  .card {
+    @apply rounded-2xl border border-ink-300/40 bg-white shadow-card;
+  }
+
+  /* Botão primário da marca */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3
+      text-sm font-semibold text-white transition
+      hover:bg-ink-700 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .btn-brand {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-3
+      text-sm font-semibold text-white transition
+      hover:bg-brand-600 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-300
+      px-6 py-3 text-sm font-semibold text-ink-700 transition hover:border-ink-900 hover:text-ink-900;
+  }
+}
+
+/* Leaflet — garantir que o mapa ocupe o container */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #e6f3ee;
+  font-family: inherit;
+}
