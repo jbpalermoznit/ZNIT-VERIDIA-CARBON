@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { whatsappLink, emailLink } from "@/lib/contact";
 
 /**
  * "Falar com um especialista da VeridIA" — princípio de design 8: saída humana
@@ -51,14 +52,14 @@ export function SpecialistButton({
             </p>
             <div className="mt-5 flex flex-col gap-3">
               <a
-                href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20vim%20da%20VeridIA%20e%20gostaria%20de%20falar%20com%20um%20especialista."
+                href={whatsappLink("Olá, vim da VeridIA e gostaria de falar com um especialista.")}
                 target="_blank"
                 rel="noreferrer"
                 className="btn-brand"
               >
                 Chamar no WhatsApp
               </a>
-              <a href="mailto:veridia@znit.com.br" className="btn-ghost">
+              <a href={emailLink("Contato VeridIA")} className="btn-ghost">
                 Enviar e-mail
               </a>
             </div>

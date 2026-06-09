@@ -9,6 +9,9 @@ import { ClassBadge, Pill } from "@/components/ui/Badge";
 import { ScoreDial } from "@/components/veridia/ScoreDial";
 import { VeridiaSays } from "@/components/veridia/VeridiaSays";
 import { SpecialistButton } from "@/components/flow/SpecialistButton";
+import { EconomicsSection } from "@/components/result/EconomicsSection";
+import { PricingTiers } from "@/components/result/PricingTiers";
+import { DownloadPdfButton } from "@/components/result/DownloadPdfButton";
 import { useSubmission } from "@/lib/useSubmission";
 import { runPreFeasibility } from "@/lib/engine";
 import {
@@ -19,7 +22,7 @@ import {
 } from "@/lib/copy";
 import { documentsPath } from "@/lib/flow";
 import { formatHa } from "@/lib/utils";
-import type { Adherence } from "@/lib/types";
+import type { Adherence, LeadData } from "@/lib/types";
 
 const ADHERENCE_BADGE: Record<Adherence, "favoravel" | "atencao" | "critico"> = {
   alta: "favoravel",
@@ -58,6 +61,10 @@ export default function ResultadoPage({ params }: { params: { id: string } }) {
   const prop = submission.property;
   const best = result.candidateRoutes[0];
 
+  const handleUnlock = (lead: LeadData) => {
+    if (submission) flush({ ...submission, lead });
+  };
+
   return (
     <div className="min-h-screen bg-white pb-24">
       {/* Header */}
@@ -66,9 +73,7 @@ export default function ResultadoPage({ params }: { params: { id: string } }) {
           <Link href="/">
             <Wordmark tone="light" />
           </Link>
-          <Link href={`/analise/${submission.id}/relatorio`} className="text-sm font-medium text-white/90 underline-offset-4 hover:underline">
-            Baixar relatório
-          </Link>
+          <DownloadPdfButton submission={submission} result={result} />
         </div>
       </header>
 
@@ -153,6 +158,15 @@ export default function ResultadoPage({ params }: { params: { id: string } }) {
           </div>
         </section>
 
+        {/* Estimativa econômica (gated por lead) */}
+        {result.economics && !result.blocked && (
+          <EconomicsSection
+            economics={result.economics}
+            hasLead={Boolean(submission.lead)}
+            onUnlock={handleUnlock}
+          />
+        )}
+
         {/* Favorece / atenção / riscos / faltantes */}
         <div className="grid gap-4 sm:grid-cols-2">
           <FindingCard title="O que favorece" tone="favoravel" items={result.keyFindings.positiveSignals} />
@@ -193,6 +207,9 @@ export default function ResultadoPage({ params }: { params: { id: string } }) {
             )}
           </div>
         </section>
+
+        {/* Planos */}
+        <PricingTiers />
 
         {/* Detalhes técnicos */}
         <section>

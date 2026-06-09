@@ -182,6 +182,8 @@ export interface VeridiaSubmission {
   eligibility: EligibilityData;
   documents: DocumentEntry[];
   result?: PreFeasibilityResult;
+  /** Lead que desbloqueou a análise econômica (modelo freemium). */
+  lead?: LeadData;
   /** Revisão do especialista (backoffice, PRD 02 §16). */
   expert?: {
     note?: string;
@@ -189,6 +191,14 @@ export interface VeridiaSubmission {
     scoreOverride?: number;
     updatedAt?: string;
   };
+}
+
+/** Lead capturado para desbloquear a análise econômica (modelo freemium). */
+export interface LeadData {
+  name: string;
+  email: string;
+  phone?: string;
+  createdAt: string;
 }
 
 export function emptySubmission(id: string): VeridiaSubmission {
@@ -315,7 +325,36 @@ export interface PreFeasibilityResult {
     technicalNotes?: string;
     generatedAt: string;
   };
+  /** Estimativa econômica preliminar (camada paga / lead). */
+  economics?: EconomicEstimate;
   /** Sinaliza bloqueio automático (TI/UC integral, sem geometria, etc.) */
   blocked: boolean;
   blockReason?: string;
+}
+
+// ---------------------------------------------------------------------------
+// Estimativa econômica preliminar
+// ---------------------------------------------------------------------------
+export interface Range {
+  min: number;
+  max: number;
+}
+
+export interface EconomicEstimate {
+  primaryRouteId: RouteId;
+  primaryRouteName: string;
+  /** Área considerada elegível para a rota principal (ha). */
+  eligibleAreaHa: number;
+  /** Sequestro/redução anual estimado (tCO2e/ano). */
+  annualCreditsTco2e: Range;
+  /** Horizonte creditável considerado (anos). */
+  horizonYears: number;
+  /** Preço de referência por tCO2e (R$). */
+  pricePerTco2eBRL: Range;
+  /** Receita bruta anual estimada (R$/ano). */
+  annualRevenueBRL: Range;
+  /** Receita bruta acumulada no horizonte (R$). */
+  grossRevenueHorizonBRL: Range;
+  assumptions: string[];
+  disclaimer: string;
 }

@@ -16,16 +16,16 @@ export default function Landing() {
 
           <div className="mx-auto mt-20 max-w-3xl text-center">
             <p className="mb-4 inline-block rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium backdrop-blur">
-              O que você já faz na sua terra pode virar renda
+              Pecuária a pasto · o que você já faz pode virar renda
             </p>
             <h1 className="text-4xl font-bold leading-[1.1] sm:text-5xl md:text-6xl">
-              Sua terra já trabalha. A VeridIA mostra onde ela pode render mais.
+              Seu pasto pode render mais do que você imagina.
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg text-white/90">
               Converse alguns minutos com a VeridIA. Ela cruza o satélite com os
-              dados da sua propriedade, diagnostica o potencial e aponta
-              oportunidades reais de gerar valor — sem trabalho extra, sem
-              jargão.
+              dados da sua fazenda, diagnostica o potencial da sua pastagem e
+              aponta onde recuperar o pasto pode virar uma nova renda — sem
+              trabalho extra, sem jargão.
             </p>
             <div className="mt-10 flex flex-col items-center gap-3">
               <div className="rounded-full bg-white p-1">
@@ -48,14 +48,14 @@ export default function Landing() {
           O papel da VeridIA
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-ink-700">
-          A VeridIA não te dá mais um projeto pra tocar. Ela olha o que você já
-          tem e traduz isso em oportunidade de negócio.
+          A VeridIA não te dá mais um projeto pra tocar. Ela olha o pasto que
+          você já tem e traduz isso em oportunidade de negócio.
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <Step n="1" title="Diagnostica o potencial" text="Cruza o satélite e o histórico da sua terra pra entender o que você já tem." />
-          <Step n="2" title="Encontra oportunidades reais" text="Mostra onde há valor escondido no manejo, na mata e nas áreas que você já cuida." />
-          <Step n="3" title="Conecta a modelos de negócio" text="Indica caminhos de monetização — do crédito de carbono a outras formas de renda." />
-          <Step n="4" title="Orienta a estratégia" text="Aponta como estruturar, posicionar e levar essas oportunidades adiante." />
+          <Step n="1" title="Diagnostica o pasto" text="Cruza o satélite e o histórico da fazenda pra ver o estado real da sua pastagem." />
+          <Step n="2" title="Encontra a oportunidade" text="Mostra onde recuperar o pasto e melhorar o manejo pode gerar carbono e renda." />
+          <Step n="3" title="Conecta à monetização" text="Indica como o carbono do solo e a produção melhor podem virar receita." />
+          <Step n="4" title="Orienta a estratégia" text="Aponta como estruturar, posicionar e levar a oportunidade adiante." />
         </div>
       </section>
 
@@ -63,16 +63,16 @@ export default function Landing() {
       <section className="bg-brand-100">
         <div className="mx-auto max-w-3xl px-6 py-20 text-center">
           <h2 className="text-2xl font-bold text-ink-900">
-            Você já faz sustentabilidade. Talvez só não esteja lucrando com ela.
+            Você já cuida do seu pasto. Talvez só não esteja lucrando com isso.
           </h2>
           <p className="mt-4 text-ink-700">
-            Floresta nativa preservada, pastagem bem manejada, integração
-            lavoura-pecuária: muito do que você já faz é um ativo ambiental. A
+            Recuperar pastagem degradada, melhorar o manejo, fazer rodízio: o que
+            você já faz no campo prende carbono no solo e pode virar um ativo. A
             VeridIA mostra esse valor e como ele pode virar retorno financeiro —
             sem mudar toda a sua operação.
           </p>
           <div className="mt-8">
-            <StartButton size="md" children="Ver o potencial da minha terra" />
+            <StartButton size="md" children="Ver o potencial do meu pasto" />
           </div>
         </div>
       </section>

@@ -44,9 +44,12 @@ export function ByZnit({ tone = "dark" }: { tone?: "dark" | "light" }) {
       )}
     >
       por
-      <span className={cn("font-bold tracking-[0.2em]", tone === "light" ? "text-white" : "text-ink-900")}>
-        ZNIT
-      </span>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={tone === "light" ? "/logo-white.png" : "/logo.png"}
+        alt="ZNIT"
+        className="h-3 w-auto"
+      />
     </span>
   );
 }

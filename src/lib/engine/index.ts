@@ -10,6 +10,7 @@ import { scoreClassification, SCORE_CLASSIFICATION } from "@/lib/copy";
 import { buildContext, type AnalysisContext } from "./context";
 import { buildCandidateRoutes } from "./routes";
 import { buildDimensions } from "./dimensions";
+import { estimateEconomics } from "./economics";
 
 export { buildContext } from "./context";
 
@@ -280,6 +281,7 @@ export function runPreFeasibility(sub: VeridiaSubmission): PreFeasibilityResult 
         : "preliminary_ready";
 
   const report = buildReport(sub, ctx, readinessScore, routes, keyFindings, recommendation);
+  const economics = blockReason ? null : estimateEconomics(ctx, routes);
 
   return {
     submissionId: sub.id,
@@ -290,6 +292,7 @@ export function runPreFeasibility(sub: VeridiaSubmission): PreFeasibilityResult 
     confidence,
     recommendation,
     report,
+    economics: economics ?? undefined,
     blocked: Boolean(blockReason),
     blockReason: blockReason ?? undefined,
   };

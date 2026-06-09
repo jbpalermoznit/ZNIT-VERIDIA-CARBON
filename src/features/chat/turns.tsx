@@ -53,6 +53,22 @@ function upsertUse(
   return { ...sub, currentUse: [...rest, entry] };
 }
 
+// mescla campos em `extra` da entrada de Pastagem, preservando condição/área
+function setPastureExtra(
+  sub: VeridiaSubmission,
+  pastureHa: number,
+  extra: Record<string, string | number | boolean>,
+): VeridiaSubmission {
+  const cur = sub.currentUse.find((u) => u.class === "Pastagem");
+  return upsertUse(sub, {
+    class: "Pastagem",
+    areaHa: cur?.areaHa ?? pastureHa,
+    condition: cur?.condition,
+    yearsInCondition: cur?.yearsInCondition,
+    extra: { ...(cur?.extra ?? {}), ...extra },
+  });
+}
+
 // =====================================================================
 // Widgets de resposta reutilizáveis
 // =====================================================================
@@ -545,6 +561,55 @@ export function buildTurns(sub: VeridiaSubmission): Turn[] {
             onConfirm={(v) =>
               commit(upsertUse(s, { class: "Pastagem", areaHa: pastureHa, condition: v[0] }))
             }
+          />
+        ),
+      });
+
+      // Pecuária — rebanho
+      turns.push({
+        id: "uso_gado",
+        answered: (s) =>
+          "herd" in (s.currentUse.find((u) => u.class === "Pastagem")?.extra ?? {}),
+        veridia: () => (
+          <p className="text-sm">
+            Tem gado nessa área hoje? Mais ou menos quantas cabeças?
+          </p>
+        ),
+        summary: (s) => {
+          const h = s.currentUse.find((u) => u.class === "Pastagem")?.extra?.herd;
+          return !h || h === "—" ? "Não sei dizer" : `Cerca de ${h} cabeças`;
+        },
+        Input: ({ sub: s, commit }) => (
+          <TextAnswer
+            placeholder="Ex.: 800"
+            allowSkip
+            onConfirm={(v) => commit(setPastureExtra(s, pastureHa, { herd: v || "—" }))}
+          />
+        ),
+      });
+
+      // Pecuária — tipo de pastejo
+      turns.push({
+        id: "uso_pastejo",
+        answered: (s) =>
+          "grazing" in (s.currentUse.find((u) => u.class === "Pastagem")?.extra ?? {}),
+        veridia: () => <p className="text-sm">E como é o manejo do pasto?</p>,
+        summary: (s) => {
+          const g = s.currentUse.find((u) => u.class === "Pastagem")?.extra?.grazing;
+          return g === "rotacionado"
+            ? "Pastejo rotacionado"
+            : g === "continuo"
+              ? "Pastejo contínuo"
+              : "Não sei";
+        },
+        Input: ({ sub: s, commit }) => (
+          <Cards
+            options={[
+              { value: "rotacionado", label: "Rotacionado", desc: "Divido em piquetes / faço rodízio" },
+              { value: "continuo", label: "Contínuo", desc: "O gado fica solto na mesma área" },
+              { value: "nao_sei", label: "Não sei" },
+            ]}
+            onConfirm={(v) => commit(setPastureExtra(s, pastureHa, { grazing: v[0] }))}
           />
         ),
       });
