@@ -61,7 +61,7 @@ export const FREE_PLAN = {
   features: [
     "Análise por satélite",
     "Score de Prontidão",
-    "Oportunidades identificadas",
-    "Estimativa de receita (com cadastro)",
+    "Rotas de crédito de carbono",
+    "Prévia do potencial de receita",
   ],
 };

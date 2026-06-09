@@ -22,7 +22,7 @@ import {
 } from "@/lib/copy";
 import { documentsPath } from "@/lib/flow";
 import { formatHa } from "@/lib/utils";
-import type { Adherence, LeadData } from "@/lib/types";
+import type { Adherence } from "@/lib/types";
 
 const ADHERENCE_BADGE: Record<Adherence, "favoravel" | "atencao" | "critico"> = {
   alta: "favoravel",
@@ -60,10 +60,8 @@ export default function ResultadoPage({ params }: { params: { id: string } }) {
   const cls = SCORE_CLASSIFICATION[sc.classification];
   const prop = submission.property;
   const best = result.candidateRoutes[0];
-
-  const handleUnlock = (lead: LeadData) => {
-    if (submission) flush({ ...submission, lead });
-  };
+  // Qualquer plano contratado (Pro ou Especialista) destrava o conteúdo Pro.
+  const hasPro = Boolean(submission.plan);
 
   return (
     <div className="min-h-screen bg-white pb-24">
@@ -73,7 +71,16 @@ export default function ResultadoPage({ params }: { params: { id: string } }) {
           <Link href="/">
             <Wordmark tone="light" />
           </Link>
-          <DownloadPdfButton submission={submission} result={result} />
+          {hasPro ? (
+            <DownloadPdfButton submission={submission} result={result} />
+          ) : (
+            <Link
+              href={`/analise/${submission.id}/contratar?plano=pro`}
+              className="text-sm font-medium text-white/90 underline-offset-4 hover:underline"
+            >
+              Relatório completo no Pro
+            </Link>
+          )}
         </div>
       </header>
 
@@ -159,12 +166,12 @@ export default function ResultadoPage({ params }: { params: { id: string } }) {
           </div>
         </section>
 
-        {/* Estimativa econômica (gated por lead) */}
+        {/* Estimativa econômica (detalhada só no Pro) */}
         {result.economics && !result.blocked && (
           <EconomicsSection
             economics={result.economics}
-            hasLead={Boolean(submission.lead)}
-            onUnlock={handleUnlock}
+            unlocked={hasPro}
+            analysisId={submission.id}
           />
         )}
 
@@ -212,15 +219,28 @@ export default function ResultadoPage({ params }: { params: { id: string } }) {
         {/* Planos */}
         <PricingTiers analysisId={submission.id} currentPlan={submission.plan?.tier} />
 
-        {/* Detalhes técnicos */}
+        {/* Detalhes técnicos (Pro) */}
         <section>
-          <button
-            onClick={() => setShowTech((v) => !v)}
-            className="text-sm font-semibold text-brand-600 hover:underline"
-          >
-            {showTech ? "Esconder" : "Ver"} detalhes técnicos
-          </button>
-          {showTech && (
+          {hasPro ? (
+            <button
+              onClick={() => setShowTech((v) => !v)}
+              className="text-sm font-semibold text-brand-600 hover:underline"
+            >
+              {showTech ? "Esconder" : "Ver"} detalhes técnicos
+            </button>
+          ) : (
+            <Link
+              href={`/analise/${submission.id}/contratar?plano=pro`}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-ink-500 hover:text-brand-600"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
+                <rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" strokeWidth="2" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" strokeWidth="2" />
+              </svg>
+              Detalhes técnicos e checagem de elegibilidade no Pro
+            </Link>
+          )}
+          {hasPro && showTech && (
             <div className="mt-4 space-y-4">
               <div className="card p-5">
                 <h3 className="font-semibold text-ink-900">Score por dimensão</h3>
