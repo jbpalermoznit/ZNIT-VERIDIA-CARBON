@@ -1,5 +1,6 @@
 import { Wordmark, ByZnit } from "@/components/ui/Wordmark";
 import { StartButton } from "@/components/landing/StartButton";
+import { ResumeLink } from "@/components/landing/ResumeLink";
 
 export default function Landing() {
   return (
@@ -34,6 +35,7 @@ export default function Landing() {
               <span className="text-sm text-white/80">
                 É uma conversa de 8 a 12 minutos · você pode sair e voltar quando quiser
               </span>
+              <ResumeLink tone="light" />
             </div>
           </div>
         </div>

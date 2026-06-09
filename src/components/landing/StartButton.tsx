@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { createSubmission, listAllSubmissions } from "@/lib/store";
+import { createSubmission } from "@/lib/store";
 import { analysisPath } from "@/lib/flow";
 
 export function StartButton({
@@ -16,13 +16,11 @@ export function StartButton({
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  async function start() {
+  function start() {
     setLoading(true);
-    // Retoma uma análise em andamento, se houver (princípio 5).
-    const existing = (await listAllSubmissions()).find(
-      (s) => s.status === "em_andamento",
-    );
-    const sub = existing ?? createSubmission();
+    // Sempre começa uma análise nova. A análise anterior continua salva e pode
+    // ser retomada pelo link "continuar de onde parei" (ResumeLink).
+    const sub = createSubmission();
     router.push(analysisPath(sub.id));
   }
 
