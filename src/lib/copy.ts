@@ -16,42 +16,35 @@ import type {
 
 export const INTENT_LABELS: Record<
   IntentOption,
-  { title: string; description: string; emoji: string }
+  { title: string; description: string }
 > = {
   plantar_floresta_nativa: {
     title: "Plantar floresta nativa",
     description: "Recuperar áreas com espécies da região",
-    emoji: "🌳",
   },
   sistema_agroflorestal: {
     title: "Sistema agroflorestal",
     description: "Plantar árvores junto com cultura ou criação",
-    emoji: "🌿",
   },
   ilpf: {
     title: "Integrar lavoura, pecuária e floresta",
     description: "Combinar as três atividades na mesma área",
-    emoji: "🐂",
   },
   melhorar_pasto: {
     title: "Melhorar o pasto",
     description: "Recuperar pastagem degradada e melhorar o manejo",
-    emoji: "🌾",
   },
   preservar_mata: {
     title: "Preservar mata existente",
     description: "Proteger a área de mata que já tenho",
-    emoji: "🌲",
   },
   plantio_comercial: {
     title: "Plantio comercial de árvores",
     description: "Eucalipto, teca e outras para venda futura",
-    emoji: "🪵",
   },
   nao_sei: {
     title: "Ainda não sei",
     description: "Quero ver quais são as minhas opções",
-    emoji: "💡",
   },
 };
 

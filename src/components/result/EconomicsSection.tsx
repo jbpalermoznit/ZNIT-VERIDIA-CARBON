@@ -67,8 +67,11 @@ export function EconomicsSection({
         {!hasLead && (
           <div className="absolute inset-0 grid place-items-center bg-white/70 p-6 backdrop-blur-[1px]">
             <div className="max-w-sm text-center">
-              <p className="text-2xl">🔒</p>
-              <h3 className="mt-2 text-lg font-bold text-ink-900">
+              <svg viewBox="0 0 24 24" className="mx-auto h-8 w-8 text-brand-500" fill="none" aria-hidden>
+                <rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" strokeWidth="2" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" strokeWidth="2" />
+              </svg>
+              <h3 className="mt-3 text-lg font-bold text-ink-900">
                 A VeridIA estimou o potencial de receita do seu pasto
               </h3>
               <p className="mt-2 text-sm text-ink-700">

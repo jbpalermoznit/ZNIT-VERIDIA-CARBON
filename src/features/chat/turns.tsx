@@ -692,7 +692,6 @@ export function buildTurns(sub: VeridiaSubmission): Turn[] {
           value: o,
           label: INTENT_LABELS[o].title,
           desc: INTENT_LABELS[o].description,
-          emoji: INTENT_LABELS[o].emoji,
         }))}
         onConfirm={(v) => commit({ ...s, currentStep: 4, intent: { ...s.intent, options: v } })}
       />

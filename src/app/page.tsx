@@ -189,9 +189,9 @@ export default function Landing() {
       <section className="mx-auto max-w-6xl px-6 py-20">
         <SectionHead eyebrow="Para quem é" title="Feita para quem vive do campo" />
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          <Persona emoji="🧑‍🌾" title="Produtor rural" text="Quer saber, sem complicação, se a terra tem potencial e se vale a pena avançar." />
-          <Persona emoji="👨‍💻" title="Filho ou sucessor" text="Cuida da gestão da família e busca novas fontes de renda para a propriedade." />
-          <Persona emoji="📊" title="Consultor parceiro" text="Atende vários produtores e usa a VeridIA para uma triagem rápida e qualificada." />
+          <Persona icon={<IconUser />} title="Produtor rural" text="Quer saber, sem complicação, se a terra tem potencial e se vale a pena avançar." />
+          <Persona icon={<IconSprout />} title="Filho ou sucessor" text="Cuida da gestão da família e busca novas fontes de renda para a propriedade." />
+          <Persona icon={<IconChart />} title="Consultor parceiro" text="Atende vários produtores e usa a VeridIA para uma triagem rápida e qualificada." />
         </div>
       </section>
 
@@ -229,14 +229,14 @@ export default function Landing() {
       {/* ===== Sustentabilidade que já existe ===== */}
       <section className="bg-brand-100">
         <div className="mx-auto max-w-3xl px-6 py-20 text-center">
-          <h2 className="text-2xl font-bold text-ink-900">
-            Você já faz sustentabilidade. Talvez só não esteja lucrando com ela.
+          <h2 className="text-2xl font-bold text-ink-900 sm:text-3xl">
+            Você já cuida bem da sua terra — e isso pode virar renda.
           </h2>
           <p className="mt-4 text-ink-700">
             Pastagem bem manejada, áreas recuperadas, mata preservada: muito do
-            que você já faz é um ativo ambiental. A VeridIA mostra esse valor e
-            como ele pode virar retorno financeiro — sem mudar toda a sua
-            operação.
+            que você já faz é um ativo ambiental que pode gerar receita. A
+            VeridIA revela esse valor e mostra como transformá-lo em renda — sem
+            mudar toda a sua operação.
           </p>
           <div className="mt-8">
             <StartButton size="md" children="Descobrir o potencial da minha terra" />
@@ -343,12 +343,44 @@ function Step({ n, title, text }: { n: string; title: string; text: string }) {
   );
 }
 
-function Persona({ emoji, title, text }: { emoji: string; title: string; text: string }) {
+function Persona({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return (
     <div className="card p-6">
-      <span className="text-3xl">{emoji}</span>
+      <span className="grid h-11 w-11 place-items-center rounded-full bg-brand-100 text-brand-600">
+        {icon}
+      </span>
       <h3 className="mt-3 font-semibold text-ink-900">{title}</h3>
       <p className="mt-2 text-sm text-ink-700">{text}</p>
     </div>
+  );
+}
+
+function IconUser() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
+      <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="2" />
+      <path d="M5 20a7 7 0 0 1 14 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconSprout() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
+      <path d="M12 21v-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M12 14c0-3 2-5 5-5 0 3-2 5-5 5z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+      <path d="M12 14c0-3-2-5-5-5 0 3 2 5 5 5z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function IconChart() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
+      <path d="M4 20V4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M4 20h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <rect x="8" y="11" width="3" height="6" rx="1" stroke="currentColor" strokeWidth="2" />
+      <rect x="14" y="7" width="3" height="10" rx="1" stroke="currentColor" strokeWidth="2" />
+    </svg>
   );
 }
