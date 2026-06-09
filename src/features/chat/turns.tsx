@@ -492,12 +492,15 @@ export function buildTurns(sub: VeridiaSubmission): Turn[] {
   turns.push({
     id: "car",
     answered: (s) => Boolean(s.property.geometrySource),
-    veridia: () => (
+    veridia: (s) => (
       <>
-        <p className="font-semibold">Oi! Eu sou a VeridIA.</p>
+        <p className="font-semibold">
+          {s.lead?.name ? `Oi, ${s.lead.name.split(" ")[0]}! ` : "Oi! "}
+          Eu sou a VeridIA.
+        </p>
         <p className="mt-1 text-sm">
-          Vou olhar a sua terra e te mostrar onde o que você já faz hoje pode
-          virar valor. Pra começar, qual é o número do seu CAR?
+          Vou analisar a sua terra e estimar quanto ela pode gerar em créditos
+          de carbono. Pra começar, qual é o número do seu CAR?
         </p>
       </>
     ),

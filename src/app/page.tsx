@@ -11,9 +11,9 @@ import {
 } from "@/components/landing/illustrations";
 
 export const metadata: Metadata = {
-  title: "VeridIA — Potencial de carbono e renda da sua propriedade rural",
+  title: "VeridIA — Quanto a sua propriedade pode gerar em créditos de carbono",
   description:
-    "A VeridIA cruza satélite e dados públicos da sua propriedade e mostra, em minutos, se ela tem potencial para projetos de crédito de carbono e quanto isso pode render. Grátis, sem jargão. Uma plataforma ZNIT.",
+    "A VeridIA cruza satélite e dados públicos da sua propriedade e calcula, em minutos, o potencial de receita com créditos de carbono. Grátis, sem jargão. Uma plataforma ZNIT.",
   keywords: [
     "crédito de carbono",
     "mercado de carbono",
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "VeridIA — Descubra o potencial de carbono e renda da sua terra",
+    title: "VeridIA — Quanto a sua terra pode gerar em créditos de carbono",
     description:
-      "Em minutos, sem custo: o potencial da sua propriedade para gerar crédito de carbono e renda.",
+      "Em minutos e sem custo: o potencial de receita da sua propriedade com créditos de carbono.",
     type: "website",
     locale: "pt_BR",
     siteName: "VeridIA",
@@ -123,15 +123,15 @@ export default function Landing() {
           <div className="mt-14 grid items-center gap-10 md:grid-cols-2">
             <div>
               <p className="mb-4 inline-block rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium backdrop-blur">
-                Pré-viabilidade de projetos de carbono no agro
+                Receita com créditos de carbono no agro
               </p>
               <h1 className="text-4xl font-bold leading-[1.1] sm:text-5xl">
-                Descubra o potencial de carbono e de renda da sua propriedade.
+                Descubra quanto a sua propriedade pode gerar em créditos de carbono.
               </h1>
               <p className="mt-5 max-w-xl text-lg text-white/90">
                 A VeridIA cruza imagens de satélite e dados públicos da sua terra
-                e mostra, em minutos, se ela tem potencial para gerar crédito de
-                carbono — e quanto isso pode render. De graça e sem jargão.
+                e calcula, em minutos, o potencial de receita com créditos de
+                carbono. De graça e sem jargão.
               </p>
               <div className="mt-8 flex flex-col items-start gap-3">
                 <div className="rounded-full bg-white p-1">
@@ -157,13 +157,13 @@ export default function Landing() {
       <section id="entrega" className="mx-auto max-w-6xl px-6 py-20">
         <SectionHead
           eyebrow="O que você recebe"
-          title="Um diagnóstico claro do potencial da sua terra"
+          title="Quanto a sua terra pode gerar em créditos de carbono"
           subtitle="Sem consultor, sem custo e sem termo técnico. A VeridIA entrega o que importa pra você decidir."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <Deliverable Illustration={IllustrationDiagnostico} title="Diagnóstico por satélite" text="A VeridIA lê o uso e a cobertura da sua terra a partir do CAR e de imagens de satélite." />
-          <Deliverable Illustration={IllustrationScore} title="Score de prontidão" text="Uma nota de 0 a 100 que resume o quão pronta a propriedade está para um projeto de carbono." />
-          <Deliverable Illustration={IllustrationRenda} title="Oportunidades de renda" text="Onde o que você já tem hoje pode virar crédito de carbono e gerar uma nova receita." />
+          <Deliverable Illustration={IllustrationScore} title="Score de prontidão" text="Uma nota de 0 a 100 que resume o quão pronta a propriedade está para gerar créditos de carbono." />
+          <Deliverable Illustration={IllustrationRenda} title="Potencial de receita" text="Uma estimativa de quanto a sua terra pode gerar em créditos de carbono por ano." />
           <Deliverable Illustration={IllustrationEstrategia} title="Próximos passos" text="Um caminho claro do que confirmar, dos documentos e de quando falar com um especialista." />
         </div>
       </section>

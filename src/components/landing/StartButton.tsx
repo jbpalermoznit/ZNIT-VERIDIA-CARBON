@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { createSubmission } from "@/lib/store";
-import { analysisPath } from "@/lib/flow";
+import { accountPath } from "@/lib/flow";
 
 export function StartButton({
   size = "lg",
@@ -18,10 +18,10 @@ export function StartButton({
 
   function start() {
     setLoading(true);
-    // Sempre começa uma análise nova. A análise anterior continua salva e pode
-    // ser retomada pelo link "continuar de onde parei" (ResumeLink).
+    // Sempre começa uma análise nova. Antes da conversa, passa pela tela de
+    // conta (cadastro/login) para capturar e salvar o lead.
     const sub = createSubmission();
-    router.push(analysisPath(sub.id));
+    router.push(accountPath(sub.id));
   }
 
   return (

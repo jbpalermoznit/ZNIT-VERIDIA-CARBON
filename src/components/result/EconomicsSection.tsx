@@ -19,7 +19,9 @@ export function EconomicsSection({
   return (
     <section className="overflow-hidden rounded-2xl border-2 border-brand-500 bg-white">
       <div className="bg-brand-500 px-6 py-3">
-        <h2 className="text-lg font-bold text-white">Quanto o seu pasto pode valer</h2>
+        <h2 className="text-lg font-bold text-white">
+          Seu potencial de receita com créditos de carbono
+        </h2>
         <p className="text-sm text-white/90">
           Estimativa de ordem de grandeza para {economics.primaryRouteName.toLowerCase()}.
         </p>
@@ -72,7 +74,7 @@ export function EconomicsSection({
                 <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" strokeWidth="2" />
               </svg>
               <h3 className="mt-3 text-lg font-bold text-ink-900">
-                A VeridIA estimou o potencial de receita do seu pasto
+                A VeridIA estimou a receita com créditos de carbono da sua terra
               </h3>
               <p className="mt-2 text-sm text-ink-700">
                 Deixe seu contato para ver a estimativa de receita e os números

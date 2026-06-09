@@ -91,7 +91,7 @@ export function IllustrationEstrategia({ className }: Props) {
 
 /** Ilustração principal do hero — mockup do card de análise da VeridIA. */
 export function IllustrationHero({ className }: Props) {
-  const r = 26;
+  const r = 30;
   const c = 2 * Math.PI * r;
   return (
     <svg viewBox="0 0 460 380" className={className} role="img" aria-label="VeridIA analisando uma propriedade rural">
@@ -150,14 +150,14 @@ export function IllustrationHero({ className }: Props) {
       <g transform="translate(266 92)">
         <rect x="0" y="0" width="138" height="178" rx="14" fill={TEAL_100} opacity="0.55" />
         {/* score */}
-        <g transform="translate(69 64)">
+        <g transform="translate(69 58)">
           <circle r={r} fill="none" stroke="#ffffff" strokeWidth="9" />
           <circle r={r} fill="none" stroke={TEAL} strokeWidth="9" strokeLinecap="round" strokeDasharray={`${c * 0.78} ${c}`} transform="rotate(-90)" />
-          <text textAnchor="middle" y="2" fontSize="22" fontWeight="700" fill={INK}>78</text>
-          <text textAnchor="middle" y="18" fontSize="9" fill={TEAL}>de 100</text>
+          <text textAnchor="middle" y="6" fontSize="20" fontWeight="700" fill={INK}>78</text>
         </g>
+        <text x="69" y="106" textAnchor="middle" fontSize="9" fill={TEAL}>Score de prontidão</text>
         {/* linhas de resultado */}
-        <g transform="translate(20 116)">
+        <g transform="translate(20 126)">
           <circle cx="3" cy="3" r="3.5" fill={TEAL} />
           <rect x="14" y="0" width="86" height="7" rx="3.5" fill={TEAL} opacity="0.8" />
           <circle cx="3" cy="22" r="3.5" fill={TEAL_300} />

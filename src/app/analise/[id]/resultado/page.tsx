@@ -80,7 +80,8 @@ export default function ResultadoPage({ params }: { params: { id: string } }) {
       <main className="mx-auto max-w-3xl space-y-8 px-5 py-8">
         <VeridiaSays>
           <p className="text-sm">
-            Pronto! Olhei a sua terra e aqui está onde ela pode gerar valor.
+            Pronto! Analisei a sua terra e aqui está o potencial de receita com
+            créditos de carbono.
           </p>
         </VeridiaSays>
 
@@ -130,9 +131,9 @@ export default function ResultadoPage({ params }: { params: { id: string } }) {
 
         {/* Rotas candidatas */}
         <section>
-          <h2 className="text-lg font-bold text-ink-900">Oportunidades pra sua terra</h2>
+          <h2 className="text-lg font-bold text-ink-900">De onde vêm os créditos de carbono</h2>
           <p className="text-sm text-ink-500">
-            Onde o que você já tem hoje pode virar valor — da mais provável à menos.
+            As rotas que podem gerar créditos na sua terra — da mais provável à menos.
           </p>
           <div className="mt-4 space-y-3">
             {result.candidateRoutes.map((r) => (
