@@ -184,6 +184,8 @@ export interface VeridiaSubmission {
   result?: PreFeasibilityResult;
   /** Lead que desbloqueou a análise econômica (modelo freemium). */
   lead?: LeadData;
+  /** Plano contratado (simulado no MVP). */
+  plan?: PlanPurchase;
   /** Revisão do especialista (backoffice, PRD 02 §16). */
   expert?: {
     note?: string;
@@ -198,6 +200,15 @@ export interface LeadData {
   name: string;
   email: string;
   phone?: string;
+  createdAt: string;
+}
+
+export type PlanTier = "pro" | "especialista";
+
+/** Plano contratado. No MVP a contratação é simulada (sem pagamento real). */
+export interface PlanPurchase {
+  tier: PlanTier;
+  status: "simulado";
   createdAt: string;
 }
 

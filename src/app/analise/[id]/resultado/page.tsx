@@ -209,7 +209,7 @@ export default function ResultadoPage({ params }: { params: { id: string } }) {
         </section>
 
         {/* Planos */}
-        <PricingTiers />
+        <PricingTiers analysisId={submission.id} currentPlan={submission.plan?.tier} />
 
         {/* Detalhes técnicos */}
         <section>

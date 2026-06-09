@@ -46,9 +46,9 @@ export function ByZnit({ tone = "dark" }: { tone?: "dark" | "light" }) {
       por
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={tone === "light" ? "/logo-white.png" : "/logo.png"}
+        src={tone === "light" ? "/logo-white-mark.png" : "/logo-mark.png"}
         alt="ZNIT"
-        className="h-3 w-auto"
+        className="h-3.5 w-auto"
       />
     </span>
   );
